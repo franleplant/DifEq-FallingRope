@@ -28,15 +28,27 @@ var calculator = function (spec) {
 		for(var i = 1; i < n ;i++){
 			var x;
 			x = vData[i] * ( dtK * g * ( 1 + u) + 2) - vData[i-1] + dtK * K;
-			v = vData[i] + vData[i-1];
-			vData.push(x);
+			
+			v = vData[i] - vData[i-1]; //calculo la velocidad x(i) - x(i-1)
+			
+			console.log(v); //muestro la velocidad para todo dt
+			
+			//controlo para evitar que suba
+			if( v < 0 ){
+				for(var i = 0; i <n; i++){
+					vData[i] = 0;
+				};
+				break;
+			};
+			
+			vData.push(x); //si hay exito, agrego el nuevo elemento al vector de datos
 		};
 	};
 	
 	that.draw = function () {
 		
 		that.calculate( );
-		var plotter = plotterClass({canvasID: 'can', canvasW: 600, canvasH: 400, xBorder: xBorder, L: L, dt: dt, vData: vData });
+		var plotter = plotterClass({canvasID: spec.canvasID, canvasW: spec.canvasW, canvasH: spec.canvasH, xBorder: xBorder, L: L, dt: dt, vData: vData });
 		plotter.draw();
 	};
 	
@@ -56,5 +68,5 @@ var calculator = function (spec) {
 }
 
 //interfaz
-//var calc = calculator({iniCon: [0,1], xBorder: 100, L: 200, dt: 1/60, g: 300, u: 0.3, n: 1000 });
+//var calc = calculator({iniCon: [0,1], xBorder: 100, L: 200, dt: 1/60, g: 300, u: 0.3, n: 1000, canvasID: "can", canvasW: 300, canvasH: 400 });
 //calc.draw();

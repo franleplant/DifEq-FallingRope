@@ -7,8 +7,8 @@
 	</head>
 	<body>
 		<h1>Falling Rope Simulation</h1>
-		<h5>Select</h5>
-		<div> 
+		<h>Select</h>
+		<div id= "botonera"> 
 			<div>x0: <input type="text" id="x0" value=0></div>
 			<div>x1: <input type="text" id="x1" value=0></div>
 			<div>Border x coordinate: <input type="text" id="xBorder" value= 100></div>
@@ -19,8 +19,8 @@
 			<div>Number of Iterations: <input type="text" id="n" value=1000></div>
 			<div><input type="button" value="Iniciar" onclick="initSimul();" ></div>
 		</div>
-		
-		<canvas id="can" width="600" height="400" style="border: 2px solid;">Please user a modern Web Browser</canvas>
+		<div id="canvasWrapper"></div>
+		<div id="paperWrapper"></div>
 		
 		<script type="text/javascript" src="raphael-min.js"></script>
 		<script type="text/javascript" src="g.raphael-min.js"></script>

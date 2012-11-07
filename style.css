@@ -1,4 +1,35 @@
+body {
+	background-color: #EEE;
+}
+
 div {
 	float:left;
+}
 
+canvas {
+	border: 2px solid;
+}
+
+h1 {
+	margin-bottom: 0px;
+}
+
+h1, h {
+	margin-left: 10px;
+}
+
+#canvasWrapper,
+#botonera,
+#paperWrapper{
+	margin: 10px;
+}
+
+#paperWrapper{
+	position: relative;
+	width: 600px;
+	height:420px;
+}
+
+#botonera{
+	border: 2px solid;
 }

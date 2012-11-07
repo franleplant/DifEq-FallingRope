@@ -13,7 +13,7 @@ var plotterClass = function (spec) {
 	var vData = spec.vData;
 	var n = vData.length;
 	var canvas = (function(){
-		var canvas = document.getElementById(spec.canvasID);
+		var canvas = document.getElementById(spec.canvasID);		
 		return canvas.getContext("2d");
 	})();
 //public atributes and methods
@@ -45,6 +45,10 @@ var plotterClass = function (spec) {
 		canvas.moveTo(zero.x + xBorder, zero.y + yi);
 		canvas.lineTo(zero.x + xBorder, zero.y + L + resto );
 		canvas.stroke();
+		
+		//Apoyo fisico
+		canvas.fillStyle="#FF0000";
+		canvas.fillRect(0, zero.y + 6, zero.x + xBorder - 6, 100);
 	};
 	
 	that.draw = function () {
