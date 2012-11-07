@@ -7,8 +7,11 @@ var plotterClass = function (spec) {
 		x: 50,
 		y: 50
 	};
-	var L;
-	var xBorder;
+	var L = spec.L || 200;
+	var xBorder = spec.xBorder || 100;
+	var dt = spec.det || 1/60;
+	var vData = spec.vData;
+	var n = vData.length;
 	var canvas = (function(){
 		var canvas = document.getElementById(spec.canvasID);
 		return canvas.getContext("2d");
@@ -22,7 +25,7 @@ var plotterClass = function (spec) {
 		L = number;
 	};
 	
-	that.draw = function ( p ) {
+	that.drawFrame = function ( p ) {
 		var xi = p.xi <= xBorder ? p.xi : xBorder; 
 		var yi = p.xi <= xBorder ? 0 : p.xi - xBorder; 
 		var resto = p.xi <= xBorder ? -(xBorder - xi) : yi ;
@@ -44,19 +47,24 @@ var plotterClass = function (spec) {
 		canvas.stroke();
 	};
 	
+	that.draw = function () {
+		var i = 0;
+		var intervalId = setInterval(function(){
+			that.drawFrame({xi: vData[i]});
+			i++;
+			if ( i === n - 1) clearInterval( intervalId );
+			}, 1000 * dt);
+		
+	}
+	
 	return that;
 }
 
-var plotter = plotterClass({canvasID: 'can', canvasW: 600, canvasH: 400});
-plotter.set_xBorder( 100 );
-plotter.set_L( 200 );
-//debugging
-var i = 0;
+//Interfaz
+//var plotter = plotterClass({canvasID: 'can', canvasW: 600, canvasH: 400, xBorder: 100, L: 200, dt: 1/60, vDatos: [0, 1, 2, 3, 4, 5, 6, 7 ,8, 9, 10]});
+//plotter.draw();
 
 
-setInterval(function(){
-		plotter.draw({xi: i });
-		i++
-		}, 1000/50);
+
 
 

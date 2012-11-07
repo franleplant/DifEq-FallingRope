@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
 	<head> 
-	
+		<link rel="stylesheet" type="text/css" href="style.css">
 		<title>Falling Rope Simulation</title>
 	
 	</head>
 	<body>
-		<canvas id="can" width="600" height="400" style="border: 2px solid;">Please user a modern Web Explorer</canvas>
-		<!-- <script type="text/javascript" src="animalClass.js"></script> -->
+		<h1>Falling Rope Simulation</h1>
+		<h5>Select</h5>
+		<div> 
+			<div>x0: <input type="text" id="x0" value=0></div>
+			<div>x1: <input type="text" id="x1" value=0></div>
+			<div>Border x coordinate: <input type="text" id="xBorder" value= 100></div>
+			<div>Rope Length <input type="text" id="L" value= 200></div>
+			<div>Gravity Constant <input type="text" id="g" value=100></div>
+			<div>Friction Constant: <input type="text" id="u" value=0.3></div>
+			<div>Time Step: <input type="text" id="dt" value=0.016666666666666></div>
+			<div>Number of Iterations: <input type="text" id="n" value=1000></div>
+			<div><input type="button" value="Iniciar" onclick="initSimul();" ></div>
+		</div>
+		
+		<canvas id="can" width="600" height="400" style="border: 2px solid;">Please user a modern Web Browser</canvas>
+		
+		<script type="text/javascript" src="raphael-min.js"></script>
+		<script type="text/javascript" src="g.raphael-min.js"></script>
+		<script type="text/javascript" src="g.line-min.js"></script>
 		<script type="text/javascript" src="plotter.js"></script>
+		<script type="text/javascript" src="calc.js"></script>
+		<script type="text/javascript" src="vista.js"></script> 
 		
 	</body>
 </html>
