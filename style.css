@@ -6,6 +6,7 @@ div {
 	float:left;
 }
 
+
 canvas {
 	border: 2px solid;
 }
@@ -18,18 +19,30 @@ h1, h {
 	margin-left: 10px;
 }
 
+p {
+	top: -80px;
+	position: relative;
+	left: 100px;
+}
+
 #canvasWrapper,
 #botonera,
-#paperWrapper{
+#paperWrapper,
+#paperWrapper2{
 	margin: 10px;
 }
 
-#paperWrapper{
+#paperWrapper,
+#paperWrapper2{
 	position: relative;
-	width: 600px;
-	height:420px;
+	width: 400px;
+	height:400px;
 }
 
 #botonera{
 	border: 2px solid;
+}
+
+#botonera div{
+	margin-left: 5px;
 }

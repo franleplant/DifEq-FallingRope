@@ -24,14 +24,55 @@ var calculator = function (spec) {
 		return vData[1] + vData[0];
 	})();
 	
+	//Analitycal Solution
+	
+	var vDataA = [];
+	
+	var b = (function(){
+		return g/L * (1 + u)
+	})();
+	
+	var c = (function(){
+		return g * (1 - xBorder/L * (1 + u))
+	})();
+	
+	var k1 = (function(){
+		var e = Math.E;
+	
+		var alpha = spec.iniCon[0],
+			betha = spec.iniCon[1];
+			
+		var w, z;
+		
+		w = alpha - betha/ Math.pow(e, -1 * Math.sqrt(b) * dt) + c/b * (1 - 1/ Math.pow(e, -1 * Math.sqrt(b) * dt));
+		
+		z = 1 - Math.pow(e, Math.sqrt(b) * dt)/ Math.pow(e, -1 * Math.sqrt(b) * dt);
+		
+		return w/z
+	})();
+	
+	var k2 = (function(){
+		var e = Math.E;
+		var betha = spec.iniCon[1];
+		
+		var w,z;
+		
+		w = betha + c/b - k1 * Math.pow(e, Math.sqrt(b) * dt);
+		
+		z = Math.pow(e, -1 * Math.sqrt(b) * dt);
+		
+		return w/z
+	})();
+	
 	that.calculate = function () {
+		vData = [spec.iniCon[0], spec.iniCon[1]];
 		for(var i = 1; i < n ;i++){
 			var x;
 			x = vData[i] * ( dtK * g * ( 1 + u) + 2) - vData[i-1] + dtK * K;
 			
 			v = vData[i] - vData[i-1]; //calculo la velocidad x(i) - x(i-1)
 			
-			console.log(v); //muestro la velocidad para todo dt
+			//console.log(v); //muestro la velocidad para todo dt
 			
 			//controlo para evitar que suba
 			if( v < 0 ){
@@ -63,6 +104,29 @@ var calculator = function (spec) {
 		};
 		return vData_t;
 	};
+	
+	that.get_analytical = function () {
+		vDataA = [spec.iniCon[0], spec.iniCon[1]];
+		var e = Math.E;
+		var x, v;
+		for(var i = 1; i < n; i++){
+			x = k1 * Math.pow(e, Math.sqrt(b) * dt * i) + k2 * Math.pow(e, -1 * Math.sqrt(b) * dt * i) - c/b;
+			
+			v = x - vDataA[i];
+			
+			//controlo para evitar que suba
+			if( v < 0 ){
+				for(var i = 0; i <n; i++){
+					vDataA[i] = 0;
+				};
+				break;
+			};
+			
+			vDataA.push(x); //if everything is ok, push
+		};
+	
+		return vDataA
+	}
 	
 	return that;
 }

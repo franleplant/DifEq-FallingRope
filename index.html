@@ -9,18 +9,19 @@
 		<h1>Falling Rope Simulation</h1>
 		<h>Select</h>
 		<div id= "botonera"> 
-			<div>x0: <input type="text" id="x0" value=0></div>
-			<div>x1: <input type="text" id="x1" value=0></div>
-			<div>Border x coordinate: <input type="text" id="xBorder" value= 100></div>
-			<div>Rope Length <input type="text" id="L" value= 200></div>
-			<div>Gravity Constant <input type="text" id="g" value=100></div>
-			<div>Friction Constant: <input type="text" id="u" value=0.3></div>
-			<div>Time Step: <input type="text" id="dt" value=0.016666666666666></div>
-			<div>Number of Iterations: <input type="text" id="n" value=1000></div>
+			<div>x0: <input type="text" id="x0" value=0>m </div>
+			<div>x1: <input type="text" id="x1" value=0>m </div>
+			<div>Border x coordinate: <input type="text" id="xBorder" value= 100>m </div>
+			<div>Rope Length <input type="text" id="L" value= 200>m </div>
+			<div>Gravity Constant <input type="text" id="g" value=100>m/s^2 </div>
+			<div>Friction Constant: <input type="text" id="u" value=0.3> </div>
+			<div>Time Step: <input type="text" id="dt" value=0.016666666666666>s </div>
+			<div>Number of Iterations: <input type="text" id="n" value=1000> </div>
 			<div><input type="button" value="Iniciar" onclick="initSimul();" ></div>
 		</div>
 		<div id="canvasWrapper"></div>
 		<div id="paperWrapper"></div>
+		<div id="paperWrapper2"></div>
 		
 		<script type="text/javascript" src="raphael-min.js"></script>
 		<script type="text/javascript" src="g.raphael-min.js"></script>
