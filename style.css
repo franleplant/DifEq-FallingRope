@@ -7,10 +7,6 @@ div {
 }
 
 
-canvas {
-	border: 2px solid;
-}
-
 h1 {
 	margin-bottom: 0px;
 }
@@ -24,25 +20,49 @@ p {
 	position: relative;
 	left: 100px;
 }
+#canvasWrapper{
+	position: relative;
+	width: 300px;
+	height: 400px;
+	border: 2px solid;
+}
 
 #canvasWrapper,
 #botonera,
-#paperWrapper,
-#paperWrapper2{
+#grafico{
 	margin: 10px;
 }
 
-#paperWrapper,
-#paperWrapper2{
+#grafico{
 	position: relative;
-	width: 400px;
-	height:400px;
+	width: 600px;
+	height: 400px;
+	border: 2px solid;
 }
 
-#botonera{
+#botonera,
+#ref{
 	border: 2px solid;
+}
+
+#ref{
+	clear: both;
+	position: relative;
 }
 
 #botonera div{
 	margin-left: 5px;
+}
+#refFinDif,
+#refAnalytical{
+	clear: both;
+	position: relative;
+	width: 200px;
+}
+#refFinDif{
+	background-color: #F00;
+}
+
+#refAnalytical{
+	background-color: #0F0;
 }
