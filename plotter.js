@@ -1,5 +1,5 @@
 //Constructor
-var plotterClass = function (spec) {
+simulCuerda.plotterClass = function (spec) {
 //Define Inheritance
 	var that = {};
 //private atributes and methods
@@ -33,6 +33,7 @@ var plotterClass = function (spec) {
 		
 		canvas.clearRect(0, 0, spec.canvasW, spec.canvasH);
 		
+		if(p.L > xBorder) { //evita que cuando L < xB se produscan anormalidades
 		//zona horizontal
 		canvas.beginPath();
 		canvas.lineWidth=10;
@@ -41,11 +42,18 @@ var plotterClass = function (spec) {
 		canvas.stroke();
 		
 		//zona vertical
-		if(p.L > xBorder) { //evita que cuando L < xB se produscan anormalidades
+		
 			canvas.beginPath();
 			canvas.lineWidth=10;
 			canvas.moveTo(zero.x + xBorder, zero.y + yi);
 			canvas.lineTo(zero.x + xBorder, zero.y + p.L + resto );
+			canvas.stroke();
+		
+		}else{
+			canvas.beginPath();
+			canvas.lineWidth=10;
+			canvas.moveTo(zero.x + xi, zero.y);
+			canvas.lineTo(zero.x + p.L, zero.y);
 			canvas.stroke();
 		
 		}
@@ -72,8 +80,8 @@ var plotterClass = function (spec) {
 }
 
 //Interfaz
-//var plotter = plotterClass({canvasID: 'can', canvasW: 600, canvasH: 400,factor: 1/1000, xBorder: 100, L: 200, dt: 1/60, vDatos: [0, 1, 2, 3, 4, 5, 6, 7 ,8, 9, 10]});
-//plotter.draw();
+//var plotter = simulCuerda.plotterClass({canvasID: spec.canvasID, canvasW: spec.canvasW, canvasH: spec.canvasH,factor: factor, xBorder: xBorder, L: L, dt: dt, vData: vData });
+//plotter.draw(plus);
 
 
 

@@ -1,5 +1,5 @@
 //clase
-var guide = function () {
+simulCuerda.guide = function () {
 
 	var that = {};
 	
@@ -25,7 +25,7 @@ var guide = function () {
 		document.getElementById('canvasWrapper').innerHTML = '<canvas id=' + canvasID + ' width='+ canvasW +' height='+ canvasH +'>Please user a modern Web Browser</canvas>';
 		document.getElementById('paperWrapper').innerHTML = '';
 			
-		var calc = calculator({iniCon: [x0, x1], xBorder: xBorder, L: L, dt: dt, g: g, u: u, n: n, factor: factor, canvasID: "can", canvasW: 300, canvasH: 400 });
+		var calc = simulCuerda.calculator({iniCon: [x0, x1], xBorder: xBorder, L: L, dt: dt, g: g, u: u, n: n, factor: factor, canvasID: "can", canvasW: 300, canvasH: 400 });
 		calc.draw(plus);
 		
 		var paper = Raphael("paperWrapper");
@@ -40,7 +40,7 @@ var guide = function () {
 	return that;
 }
 
-var guide1 = guide();
+var guide = simulCuerda.guide();
 
 
 

@@ -1,4 +1,4 @@
-var calculator = function (spec) {
+simulCuerda.calculator = function (spec) {
 	var that = {};
 	
 	var xBorder = spec.xBorder || 100;
@@ -60,7 +60,7 @@ var calculator = function (spec) {
 	that.draw = function (plus) {
 
 		that.calculate( plus);
-		var plotter = plotterClass({canvasID: spec.canvasID, canvasW: spec.canvasW, canvasH: spec.canvasH,factor: factor, xBorder: xBorder, L: L, dt: dt, vData: vData });
+		var plotter = simulCuerda.plotterClass({canvasID: spec.canvasID, canvasW: spec.canvasW, canvasH: spec.canvasH,factor: factor, xBorder: xBorder, L: L, dt: dt, vData: vData });
 		plotter.draw(plus);
 	};
 	
